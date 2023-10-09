@@ -4,9 +4,8 @@ int	ft_nbrlen(int nbr)
 {
 	int	len;
 
-	nbr /= 10;
 	len = 1;
-	while (abs(nbr))
+	while (nbr)
 	{
 		nbr /= 10;
 		len++;
@@ -16,10 +15,26 @@ int	ft_nbrlen(int nbr)
 
 char	*ft_itoa(int nbr)
 {
-	char	*str;
+	char	*res;
 	int		len;
 
+	if(nbr == -2147483648)
+		return("-2147483648");
+	res = (char *)malloc(sizeof(char) * 12);
+	if (!res)
+		return (NULL);
 	len = ft_nbrlen(nbr);
-	str = (char *)malloc(sizeof(char) * len);
-	return (str);
+	if (nbr < 0)
+	{
+		res[0] = '-';
+		nbr *= -1;
+		len++;
+	}
+	res[len] = '\0';
+	while (len--)
+	{
+		res[len] = nbr % 10 + '0';
+		nbr /= 10;
+	}
+	return (res);
 }
