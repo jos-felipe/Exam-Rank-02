@@ -5,18 +5,13 @@ int	*ft_range(int start, int end);
 
 int	main(void)
 {
-	int	start;
-	int	end;
-	int	len;
-	int	i;
-	int *res;
+	int	start = 0;
+	int	end = -3;
+	int	len = abs(end - start) + 1;
+	int	i = 0;
+	int *res = ft_range(start, end);;
 
-	start = 0;
-	end = -3;
-	len = abs(end - start) + 1;
-	i = 0;
-	res = ft_range(start, end);
 	while (i < len)
-		printf("%i\n", res[i++]);
+		printf("%d\n", res[i++]);
 	return (0);
 }
